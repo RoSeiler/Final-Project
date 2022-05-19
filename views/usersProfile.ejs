@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include("./partials/head")%>
+  <link rel="stylesheet" href="/css/user-profile.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+</head>
+<body>   
+    
+    <%- include("./partials/header")%>
+        
+
+    <main class="mainProfile">
+      <% if (locals.isAnUserLogged == true){%> 
+      <section class="seccion-perfil-usuario">
+        <div class="perfil-usuario-header">
+            <div class="perfil-usuario-portada">
+                <div class="perfil-usuario-avatar">
+                    <img src="/imagenes/panda-avatar.jpg" alt="img-avatar">
+                    <button type="button" class="boton-avatar">
+                        <i class="far fa-image"></i>
+                    </button>
+                </div>
+                <button type="button" class="boton-portada">
+                    <i class="far fa-image"></i> Cambiar fondo
+                </button>
+            </div>
+        </div>
+        <div class="perfil-usuario-body">
+            <div class="perfil-usuario-bio">
+                <h3 class="titulo"><%= userData.userName %> </h3>
+                <p class="texto">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div class="perfil-usuario-footer">
+                <ul class="lista-datos">
+                    <li ><i class="icono fas fa-map-signs"></i> Direccion de usuario: <strong class="datos"> <%= userData.email %> </strong></li>
+                    <li><i class="icono fas fa-phone-alt"></i> Telefono:<strong class="datos"> 1111111</strong> </li>
+                    <li><i class="icono fas fa-briefcase"></i> Trabaja en: <strong class="datos"><%= userData.country %></li></strong> 
+                    <li><i class="icono fas fa-building"></i> Pais: <strong class="datos"><%= userData.pais %></li></strong> 
+                </ul>
+                <ul class="lista-datos">
+                    <li><i class="icono fas fa-map-marker-alt"></i> Ubicacion.</li>
+                    <li><i class="icono fas fa-calendar-alt"></i> <%=userData.fechaNacimiento %></li>
+                    <li><i class="icono fas fa-user-check"></i> Registro.</li>
+                    <li><i class="icono fas fa-share-alt"></i> Redes sociales.</li>
+                    <li> <a href="/products/create" >Publica tu producto</a></li>
+                   <li> <a href="/users/edit" >Editar perfil</a></li>
+                </ul>
+            </div>
+            <div class="redes-sociales">
+                <a href="https://www.facebook.com/" class="boton-redes facebook fab fa-facebook-f"><i class="icon-facebook"></i></a>
+                <a href="https://twitter.com" class="boton-redes twitter fab fa-twitter"><i class="icon-twitter"></i></a>
+                <a href="https://instagram.com" class="boton-redes instagram fab fa-instagram"><i class="icon-instagram"></i></a>
+            </div>
+        </div>
+        <%} else { %> 
+          <button><a href="/"> REGISTRARSE </a> </button> 
+          <%}%>
+    </section>
+    
+    </main>
+
+      <!-- footer -->
+  <%- include("./partials/footer")%>
+
+</body>
+</html>
